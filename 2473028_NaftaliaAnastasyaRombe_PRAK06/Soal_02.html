@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>2473028-Naftalia Anastasya Rombe</title>
+
+        <style>
+            table.outer {
+                border: 1px solid black;
+                margin: 5px auto;
+            }
+
+            table.inner {
+                border-collapse: separate; 
+                border-spacing: 2px; 
+            }
+
+            table.inner td {
+                border: 2px solid black;
+                padding: 8px;
+                text-align: center;
+                width: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="hasil"></div>
+
+        <script>
+            let angka;
+
+            do {
+                angka = prompt("A Number?");
+            } while (angka === null || angka.trim() === "" || isNaN(angka));
+
+            angka = parseInt(angka);
+
+            let output = "<table class='outer'><tr><td>";
+            output += "<table class='inner'>";
+
+            for (let i = 1; i <= angka; i++) {
+                output += "<tr>";
+                output += "<td>" + i + "</td>";
+                output += "<td>x</td>";
+                output += "<td>" + angka + "</td>";
+                output += "<td>=</td>";
+                output += "<td>" + (i * angka) + "</td>";
+                output += "</tr>";
+            }
+
+            output += "</table>";
+            output += "</td></tr></table>";
+
+            document.getElementById("hasil").innerHTML = output;
+        </script>
+    </body>
+</html>
+

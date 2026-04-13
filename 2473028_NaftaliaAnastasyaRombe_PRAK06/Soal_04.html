@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>2473028-Naftalia Anastasya Rombe</title>
+
+        <style>
+            table.outer {
+                border: 1px solid black;
+                margin: auto;
+                display: inline-table;  
+            }
+
+            table.inner {
+                table-layout: fixed;
+                width: auto;
+            }
+
+            table.inner td {
+                border: 1px solid black;
+                padding: 6px;
+            }
+
+            .label {
+                color: blue;
+                font-weight: bold;
+                width: 70px; 
+                text-align: right;  
+
+            }
+
+            .inputbox {
+                width: 200px; 
+            }
+
+            .inputbox input {
+                width: 80%;
+            }
+
+            .center {
+                text-align: center;
+            }
+
+            button {
+                color: blue;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+
+    <body>
+        <table class="outer">
+            <tr>
+                <td>
+
+                    <table class="inner">
+
+                        <tr>
+                            <td class="label">Input :</td>
+                            <td class="inputbox">
+                                <input type="text" id="input">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="label">Output :</td>
+                            <td class="inputbox">
+                                <input type="text" id="output" readonly>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2" class="center">
+                                <select id="mode">
+                                    <option value="dec-bin">decimal-biner</option>
+                                    <option value="bin-dec">biner-decimal</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2" class="center">
+                                <button onclick="proses()">PROSES</button>
+                                <button onclick="resetForm()">RESET</button>
+                            </td>
+                        </tr>
+
+                    </table>
+
+                </td>
+            </tr>
+        </table>
+    </body>
+
+    <script>
+        function proses() {
+            let input = document.getElementById("input").value;
+            let mode = document.getElementById("mode").value;
+            let hasil = "";
+
+            if (mode === "dec-bin") {
+                if (input === "" || isNaN(input) || input < 0 || input > 255) {
+                    alert("Input harus angka 0 - 255!");
+                    return;
+                }
+
+                let angka = parseInt(input);
+
+                if (angka === 0) {
+                    hasil = "0";
+                } else {
+                    while (angka > 0) {
+                        hasil = (angka % 2) + hasil;
+                        angka = Math.floor(angka / 2);
+                    }
+                }
+
+            } else {
+                if (!/^[01]{1,8}$/.test(input)) {
+                    alert("Input harus biner (0/1) max 8 digit!");
+                    return;
+                }
+
+                let panjang = input.length;
+                let total = 0;
+
+                for (let i = 0; i < panjang; i++) {
+                    let bit = parseInt(input[i]);
+                    let pangkat = panjang - i - 1;
+                    total += bit * Math.pow(2, pangkat);
+                }
+
+                hasil = total;
+            }
+
+            document.getElementById("output").value = hasil;
+        }
+
+        function resetForm() {
+            document.getElementById("input").value = "";
+            document.getElementById("output").value = "";
+        }
+    </script>
+</html>

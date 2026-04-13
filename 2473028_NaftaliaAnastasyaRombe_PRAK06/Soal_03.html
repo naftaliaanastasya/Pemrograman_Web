@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>2473028-Naftalia Anastasya Rombe</title>
+        
+    </head>
+
+    <body>
+        Tinggi Piramida : <input type="text" id="tinggi">
+        <button onclick="proses()">Proses</button>
+
+        <br><br>
+
+        <script type="text/javascript">
+            function proses() {
+                var t = document.getElementById("tinggi").value;
+
+                if (isNaN(t)) {
+                    alert("tinggi harus angka");
+                    return;
+                }
+                var tinggi = parseInt(t);  
+
+                document.write("<table border='1' width='800' height='600' style='border-collapse: collapse; border: 1px solid white;'>");
+
+                    for (var i = 1; i <= tinggi; i++) {
+                        document.write("<tr>");
+
+                        for (var j = 1; j <= tinggi - i; j++) {
+                            document.write("<td></td>");
+                        }
+
+                        for (var k = 1; k <= (2 * i - 1); k++) {
+                            document.write("<td bgcolor='orange'></td>");
+                        }
+
+                        for (var j = 1; j <= tinggi - i; j++) {
+                            document.write("<td></td>");
+                        }
+
+                        document.write("</tr>");
+                    }
+
+                    document.write("</table>");
+            }
+        </script>
+    </body>
+</html>

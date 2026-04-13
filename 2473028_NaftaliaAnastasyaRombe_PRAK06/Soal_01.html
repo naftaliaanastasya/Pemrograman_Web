@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>2473028-Naftalia Anastasya Rombe</title>
+
+        <style>
+            table{
+                border-collapse: collapse; 
+            }
+            
+            td{
+                border: 3px solid black;
+                width: 50px;
+                height: 50px;
+                text-align: center;
+                font-size: 30px;
+                font-weight: bold;
+            }
+
+        
+        </style>
+    </head>
+
+    <body>
+        Angka Pertama : <input type="text" id="angka1"><br><br>
+        Angka Kedua   : <input type="text" id="angka2">
+
+        <br>
+
+        <button onclick="hitung()">count</button>
+        <br><br>
+        <table cellpadding="10">
+            <tr>
+                <td id="t1"></td>
+                <td>+</td>
+                <td id="t2"></td>
+                <td>=</td>
+                <td id="hsltambah"></td>
+            </tr>
+            
+            <tr>
+                <td id="k1"></td>
+                <td>-</td>
+                <td id="k2"></td>
+                <td>=</td>
+                <td id="hslkurang" class="hasil"></td>
+            </tr>
+        </table>
+
+        <script>
+            function hitung() {
+                var x = document.getElementById("angka1").value;
+                var y = document.getElementById("angka2").value;
+
+                if (x === "" || y === "") {
+
+                    alert("input tidak boleh kosong");
+                    return;
+                }
+
+                if (isNaN(x) || isNaN(y)) {
+                    alert("input harus angka");
+                    return;
+                }
+
+                var a = parseInt(x);
+                var b = parseInt(y);
+
+                var tambah = a + b;
+                var kurang = a - b;
+
+                document.getElementById("t1").innerHTML = a;
+                document.getElementById("t2").innerHTML = b;
+                document.getElementById("hsltambah").innerHTML = tambah;
+
+                document.getElementById("k1").innerHTML = a;
+                document.getElementById("k2").innerHTML = b;
+                document.getElementById("hslkurang").innerHTML = kurang;
+                }
+        </script>
+    </body>  
+</html>
+
