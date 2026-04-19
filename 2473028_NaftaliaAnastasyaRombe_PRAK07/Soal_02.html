@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>2473028-Naftalia Anastasya Rombe</title>
+
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 400px;
+                margin: 20px;
+                box-shadow: 0 0 10px #ccc;
+            }
+
+            th {
+                background-color: #b7c9b5;
+                padding: 10px;
+                border: 1px solid #ddd;
+            }
+
+            td {
+                padding: 10px;
+                border: 1px solid #ddd;
+            }
+
+            .odd {
+                background-color: #8fb1d9;
+            }
+
+            .even {
+                background-color: #e6b48f;
+            }
+
+            .hover {
+                background-color: #CCFFAA !important;
+            }
+        </style>
+    </head>
+
+    <body>
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <th>Position</th>
+                    <th>Programming Language</th>
+                    <th>Ratings</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <script>
+            const data = [
+                { pos: 1, lang: "C", rating: "18.058%" },
+                { pos: 2, lang: "Java", rating: "18.051%" },
+                { pos: 3, lang: "C++", rating: "9.707%" },
+                { pos: 4, lang: "PHP", rating: "9.662%" },
+                { pos: 5, lang: "(Visual) Basic", rating: "6.392%" }
+            ];
+
+            window.onload = function () {
+                const tbody = document.querySelector("#myTable tbody");
+
+                data.forEach((item, index) => {
+                    let row = document.createElement("tr");
+
+                    row.className = (index % 2 === 0) ? "odd" : "even";
+
+                    row.innerHTML = `
+                        <td>${item.pos}</td>
+                        <td>${item.lang}</td>
+                        <td>${item.rating}</td>
+                    `;
+
+                    row.onmouseover = function () {
+                        this.classList.add("hover");
+                    };
+
+                    row.onmouseout = function () {
+                        this.classList.remove("hover");
+                    };
+
+                    tbody.appendChild(row);
+                });
+            };
+        </script>
+    </body>
+</html>

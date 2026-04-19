@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>2473028-Naftalia Anastasya Rombe</title>
+
+        <style>
+            table {
+                border: 1px solid black;
+                padding: 10px;
+            }
+            td {
+                padding: 5px;
+            }
+            input, select {
+                padding: 5px;
+            }
+            .label {
+                font-size: 25px;
+            }
+            
+        </style>
+    </head>
+
+    <body>
+         <table>
+            <tr>
+                <td class="label">Data</td>
+                <td><input type="number" id="inputData"></td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="tambahData()">Add</button>
+                </td>
+                <td>
+                    <select id="operasi" onchange="prosesOperasi()">
+                        <option value="">Pilih Operasi</option>
+                        <option value="display">Display</option>
+                        <option value="count">Count</option>
+                        <option value="sum">Sum</option>
+                        <option value="average">Average</option>
+                        <option value="max">Max</option>
+                        <option value="min">Min</option>
+                        <option value="ganjil">Ganjil</option>
+                        <option value="genap">Genap</option>
+                        <option value="hapus">Hapus</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Hasil</td>
+                <td><input type="text" id="hasil" readonly></td>
+            </tr>
+        </table>
+    
+        <script>
+            let dataArray = [];
+            
+            function tambahData() {
+                let input = document.getElementById("inputData");
+                let nilai = parseInt(input.value);
+
+                if (!isNaN(nilai)) {
+                    dataArray.push(nilai);
+                    input.value = "";
+                } else {
+                    alert("Masukkan angka!");
+                }
+            }
+            
+            function prosesOperasi() {
+                let op = document.getElementById("operasi").value;
+                let hasil = document.getElementById("hasil");
+
+                switch(op) {
+                    case "display":
+                        hasil.value = dataArray.join(", ");
+                        break;
+                    case "count":
+                        hasil.value = dataArray.length;
+                        break;
+                    case "sum":
+                        hasil.value = dataArray.reduce((a, b) => a + b, 0);
+                        break;
+                    case "average":
+                        hasil.value = dataArray.length 
+                            ? dataArray.reduce((a, b) => a + b, 0) / dataArray.length 
+                            : 0;
+                        break;
+                    case "max":
+                        hasil.value = Math.max(...dataArray);
+                        break;
+                    case "min":
+                        hasil.value = Math.min(...dataArray);
+                        break;
+                    case "ganjil":
+                        hasil.value = dataArray.filter(x => x % 2 !== 0).join(", ");
+                        break;
+                    case "genap":
+                        hasil.value = dataArray.filter(x => x % 2 === 0).join(", ");
+                        break;
+                    case "hapus":
+                        dataArray = [];
+                        hasil.value = "Data dihapus";
+                        break;
+                }
+            }
+        </script>
+    </body>
+</html>
