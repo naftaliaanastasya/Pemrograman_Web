@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Naftalia Anastasya Rombe-2473028</title>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        
+        <style>
+            body{
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                height:100vh;
+                margin:0;
+                font-family:Arial;
+            }
+
+            .wrapper{
+                width:fit-content;
+            }
+
+            .container{
+                display:flex;
+                margin-top:15px;
+            }
+
+            .box{
+                width:40px;
+                height:40px;
+                margin:5px;
+                border:2px solid blue;
+            }
+
+            .red{
+                background:red;
+            }
+
+            .yellow{
+                background:yellow;
+            }
+
+        </style>
+        
+        <script>
+            $(document).ready(function(){
+
+                $(".box").click(function(){
+
+                    $(".box").removeClass("red");
+
+                    $(this).addClass("red");
+
+                });
+
+                $("button").click(function(){
+
+                    $(".box").each(function(){
+
+                        if($(this).hasClass("red")){
+                            return false;
+                        }
+
+                        $(this).addClass("yellow");
+
+                    });
+
+                });
+
+            });
+
+        </script>
+    </head>
+    
+    <body>
+        <div class="wrapper">
+            <button>Change colors</button>
+            <div class="container">
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Virtual Keyboard</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #323437;
+  color: #e2b714;
+  text-align: center;
+  font-family: Arial;
+}
+
+textarea {
+  width: 80%;
+  height: 150px;
+  margin: 20px auto;
+  display: block;
+  background: #323437;
+  color: #e2b714;
+  border: 2px solid #e2b714;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.keyboard {
+  width: 80%;
+  margin: auto;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(34, 1fr);
+}
+
+button {
+  width: 100%;
+  height: 45px;
+  border: 1px solid #e2b714;
+  background: #323437;
+  color: #e2b714;
+  cursor: pointer;
+}
+
+button:hover {
+  background: aqua;
+  color: black;
+}
+
+/* ukuran */
+.kecil { grid-column: span 2; }
+.sedang { grid-column: span 3; }
+.besar { grid-column: span 6; }
+</style>
+
+</head>
+
+<body>
+
+<h2>VIRTUAL KEYBOARD</h2>
+
+<textarea id="textArea" placeholder="Ketik di sini..."></textarea>
+
+<div class="keyboard">
+
+<!-- ROW 1 -->
+<div class="row">
+  <button class="sedang" onclick="addChar('~')">~</button>
+  <button class="sedang" onclick="addChar('1')">1</button>
+
+  <button class="kecil" onclick="addChar('2')">2</button>
+  <button class="kecil" onclick="addChar('3')">3</button>
+  <button class="kecil" onclick="addChar('4')">4</button>
+  <button class="kecil" onclick="addChar('5')">5</button>
+  <button class="kecil" onclick="addChar('6')">6</button>
+  <button class="kecil" onclick="addChar('7')">7</button>
+  <button class="kecil" onclick="addChar('8')">8</button>
+  <button class="kecil" onclick="addChar('9')">9</button>
+  <button class="kecil" onclick="addChar('0')">0</button>
+
+  <button class="kecil" onclick="addChar('-')">-</button>
+  <button class="kecil" onclick="addChar('=')">=</button>
+
+  <button class="besar" onclick="backspace()">Backspace</button>
+</div>
+
+<!-- ROW 2 -->
+<div class="row">
+  <button class="besar" onclick="addChar('\t')">Tab</button>
+
+  <button class="kecil" onclick="addChar('Q')">Q</button>
+  <button class="kecil" onclick="addChar('W')">W</button>
+  <button class="kecil" onclick="addChar('E')">E</button>
+  <button class="kecil" onclick="addChar('R')">R</button>
+  <button class="kecil" onclick="addChar('T')">T</button>
+  <button class="kecil" onclick="addChar('Y')">Y</button>
+  <button class="kecil" onclick="addChar('U')">U</button>
+  <button class="kecil" onclick="addChar('I')">I</button>
+  <button class="kecil" onclick="addChar('O')">O</button>
+  <button class="kecil" onclick="addChar('P')">P</button>
+
+  <button class="kecil" onclick="addChar('[')">[</button>
+  <button class="kecil" onclick="addChar(']')">]</button>
+  <button class="kecil" onclick="addChar('\\\\')">\</button>
+</div>
+
+<!-- ROW 3 -->
+<div class="row">
+  <button class="besar">Caps Lock</button>
+
+  <button class="kecil" onclick="addChar('A')">A</button>
+  <button class="kecil" onclick="addChar('S')">S</button>
+  <button class="kecil" onclick="addChar('D')">D</button>
+  <button class="kecil" onclick="addChar('F')">F</button>
+  <button class="kecil" onclick="addChar('G')">G</button>
+  <button class="kecil" onclick="addChar('H')">H</button>
+  <button class="kecil" onclick="addChar('J')">J</button>
+  <button class="kecil" onclick="addChar('K')">K</button>
+  <button class="kecil" onclick="addChar('L')">L</button>
+
+  <button class="kecil" onclick="addChar(';')">;</button>
+  <button class="kecil" onclick="addChar('\'')">'</button>
+
+  <button class="besar" onclick="addChar('\n')">Enter</button>
+</div>
+
+<!-- ROW 4 -->
+<div class="row">
+  <button class="besar">Shift</button>
+
+  <button class="kecil" onclick="addChar('Z')">Z</button>
+  <button class="kecil" onclick="addChar('X')">X</button>
+  <button class="kecil" onclick="addChar('C')">C</button>
+  <button class="kecil" onclick="addChar('V')">V</button>
+  <button class="kecil" onclick="addChar('B')">B</button>
+  <button class="kecil" onclick="addChar('N')">N</button>
+  <button class="kecil" onclick="addChar('M')">M</button>
+
+  <button class="kecil" onclick="addChar(',')">,</button>
+  <button class="kecil" onclick="addChar('.')">.</button>
+  <button class="kecil" onclick="addChar('/')">/</button>
+
+  <button class="besar">Shift</button>
+</div>
+
+</div>
+
+<script>
+function addChar(char) {
+  document.getElementById("textArea").value += char;
+}
+
+
+</script>
+
+</body>
+</html>

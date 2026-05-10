@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Naftalia Anastasya Rombe-2473028</title>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+        <style>
+            body{
+                font-family: Arial, sans-serif;
+                background:#ffffff;
+            }
+
+            .kotak{
+                width:700px;
+                height:120px;
+                margin:40px auto;
+                padding:15px;
+            }
+
+            ol{
+                list-style:none;
+                margin:0;
+                padding:0;
+            }
+
+            .menuUtama{
+                display:flex;
+                gap:14px;
+            }
+
+            .menuUtama > li{
+                position:relative;
+            }
+
+            .menuUtama > li > a{
+                display:block;
+                width:170px;
+                background:#ff1493;
+                color:white;
+                text-decoration:underline;
+                font-size:20px;
+                padding:3px 8px;
+                box-sizing:border-box;
+            }
+
+            .menuUtama li ol{
+                position:absolute;
+                top:30px;
+                left:0;
+                width:170px;
+                border:3px solid #ff1493;
+                background:white;
+            }
+
+            .menuUtama li ol li a{
+                display:block;
+                color:black;
+                text-decoration:underline;
+                font-size:18px;
+                padding-left:5px;
+                background:white;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="kotak">
+
+            <ol class="menuUtama">
+
+                <li class="item">
+                    <a href="#">jQuery</a>
+
+                    <ol>
+                        <li><a href="#">Download</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ol>
+                </li>
+
+                <li class="item">
+                    <a href="#">Community</a>
+
+                    <ol>
+                        <li><a href="#">Mailing List</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Demos</a></li>
+                        <li><a href="#">Plugins</a></li>
+                    </ol>
+                </li>
+
+                <li class="item">
+                    <a href="#">Development</a>
+
+                    <ol>
+                        <li><a href="#">Source Code</a></li>
+                        <li><a href="#">Bug Tracking</a></li>
+                        <li><a href="#">Recent Changes</a></li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
+        
+        <script>
+            $(document).ready(function(){
+
+                $("li.item ol").hide();
+
+                $("li.item").hover(
+
+                    function(){
+                        $("li.item ol").hide(); 
+                        $(this).children("ol").show();
+                    },
+
+                    function(){
+                        $(this).children("ol").hide();
+                    }
+
+                );
+
+            });
+        </script>
+    </body>
+</html>

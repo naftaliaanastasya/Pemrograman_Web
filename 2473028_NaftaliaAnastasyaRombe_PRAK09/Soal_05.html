@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Naftalia Anastasya Rombe-2473028</title>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        
+        <style>
+            body{
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                height:100vh;
+                margin:0;
+                font-family:Arial;
+            }
+
+            .wrapper{
+                width:fit-content;
+            }
+
+            .container{
+                display:flex;
+                margin-top:15px;
+            }
+
+            div{
+                width:40px;
+                height:40px;
+                margin:5px;
+                border:2px solid blue;
+            }
+
+            #red{
+                background:red;
+            }
+
+            .yellow{
+                background:yellow;
+            }
+
+        </style>
+        
+        <script>
+            $(document).ready(function(){
+
+                $("div").click(function(){
+
+                    $("div").removeAttr("id");
+
+                    $(this).attr("id","red");
+
+                });
+
+                $("button").click(function(){
+
+                    $("div").each(function(index, domEle){
+
+                        if($(this).attr("id") == "red"){
+                            return false;
+                        }
+
+                        $(this).addClass("yellow");
+
+                    });
+
+                });
+
+            });
+        </script>
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <button>Change colors</button>
+            <div class="container">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </body>
+</html>

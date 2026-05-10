@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Naftalia Anastasya Rombe-2473028</title>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+        <style>
+            body{
+                font-family: Arial;
+            }
+
+            #box{
+                width: 350px;
+                border: 1px solid black;
+                padding: 10px;
+
+                margin: auto;
+                margin-top: 100px;
+            }
+
+            #txtNama{
+                font-size: 14px;
+            }
+
+            button{
+                font-size: 15px;
+            }
+
+            #namaList div{
+                font-size: 16px;
+                margin-top: 5px;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="box">
+
+            <input type="text" id="txtNama">
+
+            <button id="btnAdd">Add</button>
+
+            <button id="btnSearch">Search</button>
+
+            <div id="namaList">
+
+                <div>John Resig</div>
+                <div>George Martin</div>
+                <div>Malcom John Sinclair</div>
+                <div>J. Ohn</div>
+            </div>
+        </div>
+        
+        <script>
+
+            $(document).ready(function(){
+
+                $("#btnAdd").click(function(){
+
+                    let nama = $("#txtNama").val();
+
+                    if(nama != ""){
+
+                        $("<div>" + nama + "</div>").appendTo("#namaList");
+
+                        $("#txtNama").val("");
+
+                    }
+
+                });
+
+                $("#btnSearch").click(function(){
+
+                    let cari = $("#txtNama").val().toLowerCase();
+
+                    $("#namaList div").css("text-decoration","none");
+
+                    $("#namaList div").each(function(){
+
+                        let text = $(this).text().toLowerCase();
+
+                        if(text.includes(cari)){
+
+                            $(this).css("text-decoration","underline");
+
+                        }
+
+                    });
+
+                });
+
+            });
+        </script>
+    </body>
+</html>
