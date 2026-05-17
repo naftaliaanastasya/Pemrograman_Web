@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>2473028-Naftalia Anastasya Rombe</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <style>
+            body{
+                font-family: "Times New Roman";
+            }
+
+            #atas{
+                width: 360px;
+                margin: auto;
+            }
+
+            #luar{
+                border: 1px solid gray;
+                padding: 3px;
+            }
+
+            table{
+                width: 100%;
+                border-spacing: 4px;
+            }
+
+            table td{
+                border: 1px solid black;
+                padding: 5px;
+                font-size: 16px;
+            }
+
+            button{
+                margin-top: 10px;
+            }
+
+            #kotak{
+                width: 650px;
+                border: 1px solid gray;
+                margin: auto;
+            }
+
+            #header{
+                text-align: center;
+                border-bottom: 1px solid gray;
+                padding: 15px;
+            }
+
+            #header a{
+                color: blue;
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .isi{
+                padding: 10px;
+            }
+
+            .judul a{
+                color: blue;
+                text-decoration: underline;
+            }
+
+            .footer{
+                border-top: 1px solid gray;
+                padding: 5px;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="atas">
+            <div id="luar">
+                <table>
+                    <tr>
+                        <td>Title</td>
+                    </tr>
+                    <tr>
+                        <td>Content</td>
+                    </tr>
+                    <tr>
+                        <td>Generator</td>
+                    </tr>
+                </table>
+            </div>
+            <button id="look">Look</button>
+        </div>
+
+        <br><br>
+
+        <div id="hasil"></div>
+
+        <script>
+            $(document).ready(function(){
+
+                $("#look").click(function(){
+
+                    $("#hasil").empty();
+
+                    $.getJSON("SIJson.txt", function(data){
+
+                        var tampil = "";
+
+                        tampil += "<div id='kotak'>";
+
+                        tampil += "<div id='header'>";
+
+                        tampil += "<a href='" + data.link + "' target='_blank'>";
+
+                        tampil += data.title;
+
+                        tampil += "</a>";
+
+                        tampil += "</div>";
+
+                        $.each(data.items, function(i, item){
+
+                            tampil += "<div class='isi'>";
+
+                            tampil += "<div class='judul'>";
+
+                            tampil += "<a href='" + item.link + "' target='_blank'>";
+
+                            tampil += item.title;
+
+                            tampil += "</a>";
+
+                            tampil += "</div>";
+
+                            tampil += "By : " + item.author +
+                                    " / <i>" + item.published + "</i><br><br>";
+
+                            tampil += item.description + "<br><br>";
+
+                            tampil += "Universitas : ";
+
+                            tampil += "<a href='" + item.universitas.m +
+                                    "' target='_blank'>Click Here</a><br>";
+
+                            tampil += "Tag(s) : " + item.tags;
+
+                            tampil += "</div>";
+
+                        });
+
+                        tampil += "<div class='footer'>";
+
+                        tampil += "&copy; " + data.generator;
+
+                        tampil += "</div>";
+
+                        tampil += "</div>";
+
+                        $("#hasil").html(tampil);
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

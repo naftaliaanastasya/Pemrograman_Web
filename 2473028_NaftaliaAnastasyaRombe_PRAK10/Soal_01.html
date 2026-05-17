@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>2473028-Naftalia Anastasya Rombe</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <style>
+            body{
+                font-family: Arial;
+                margin: 30px;
+            }
+
+            .box{
+                width: 300px;
+                border: 1px solid black;
+                padding: 15px;
+            }
+
+            table{
+                border-collapse: collapse;
+                margin-top: 20px;
+                width: 700px;
+            }
+
+            th{
+                background-color: black;
+                color: white;
+                padding: 10px;
+                border: 1px solid black;
+            }
+
+            td{
+                padding: 10px;
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h2>
+        Selamat! Berikut adalah Daftar Mahasiswa yang mendapat
+        Nilai A Pemrograman Web SI Tahun Ajaran 2023/2024
+        </h2>
+
+        <div class="box">
+            <input type="radio" name="kelas" value="all"> All <br>
+            <input type="radio" name="kelas" value="A"> Kelas A <br>
+            <input type="radio" name="kelas" value="B"> Kelas B <br><br>
+            <button id="btnCari">Search</button>
+        </div>
+
+        <br>
+
+        <div id="hasil"></div>
+        
+        <script>
+            $(document).ready(function(){
+
+                $("#btnCari").click(function(){
+
+                    var pilihan = $(":radio[name='kelas']:checked").val();
+
+                    var file = "";
+
+                    if(pilihan == "all"){
+                        file = "nilai.json";
+                    }
+
+                    else if(pilihan == "A"){
+                        file = "nilaiA.json";
+                    }
+
+                    else if(pilihan == "B"){
+                        file = "nilaiB.json";
+                    }
+
+                    else{
+                        alert("Pilih kelas terlebih dahulu!");
+                        return;
+                    }
+
+                    $.getJSON(file, function(data){
+
+                        var isi = "";
+
+                        isi += "<table>";
+
+                        isi += "<tr>";
+                        isi += "<th>NRP</th>";
+                        isi += "<th>NAMA</th>";
+                        isi += "<th>KELAS</th>";
+                        isi += "<th>NILAI AKHIR</th>";
+                        isi += "</tr>";
+
+                        $.each(data.nilai, function(i, item){
+
+                            isi += "<tr>";
+
+                            isi += "<td>" + item.nrp + "</td>";
+                            isi += "<td>" + item.nama + "</td>";
+                            isi += "<td>" + item.kelas + "</td>";
+                            isi += "<td>" + item.nilaiakhir + "</td>";
+
+                            isi += "</tr>";
+
+                        });
+
+                        isi += "</table>";
+
+                        $("#hasil").html(isi);
+
+                        $("tr:odd").css("background-color", "#FFFFCC");
+                        $("tr:even").css("background-color", "#CCFFAA");
+
+                        $("th").css({
+                            "background-color":"black",
+                            "color":"white"
+                        });
+
+                    });
+
+                });
+
+            });
+        </script>
+    </body>
+</html>
